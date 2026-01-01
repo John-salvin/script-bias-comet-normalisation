@@ -1,0 +1,29 @@
+# ── Data & statistics ────────────────────────────────────────────────────────
+pandas==2.2.3
+numpy==1.26.4
+scipy==1.14.1
+openpyxl==3.1.5
+
+# ── Calibration models (isotonic, GBM, train/test split) ─────────────────────
+scikit-learn==1.5.2
+
+# ── Visualisation ────────────────────────────────────────────────────────────
+matplotlib==3.9.2
+
+# ── Verification harness ─────────────────────────────────────────────────────
+PyYAML==6.0.2
+pytest==8.3.3
+
+# ── Notebooks ────────────────────────────────────────────────────────────────
+jupyter==1.1.1
+jupyterlab==4.2.5
+ipykernel==6.29.5
+nbconvert==7.16.4
+nbformat==5.10.4
+
+# NOTE
+#   Neural scoring libraries (unbabel-comet, bert-score, BLEURT, sacrebleu,
+#   transformers, ai4bharat-transliteration) are NOT required here. COMET,
+#   BLEURT, BERTScore, TP and IP were computed upstream and are committed as
+#   columns in data/indic/. This repository re-derives every reported statistic
+#   from those columns; it does not re-run the metrics.

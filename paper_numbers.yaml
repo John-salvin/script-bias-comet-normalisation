@@ -1,0 +1,2195 @@
+# paper_numbers.yaml -- ground-truth registry.
+#
+# WHAT THIS IS
+#   Each entry records a reported quantity together with the tolerance within
+#   which it should reproduce. The values are recorded independently of the
+#   code in this repository; scripts/verify_paper_numbers.py recomputes each
+#   one from the committed workbooks and compares.
+#
+# STATUS
+#   verified : recomputed from the committed data and asserted.
+#   script   : RNG-dependent (split / GBM / permutation); reproducible only
+#              under meta.seeds below.
+
+meta:
+  paper_title: >-
+    Making COMET Comparable Across Scripts: Diagnosis and Correction of
+    Tokeniser-Induced Script Bias in Indic MT Evaluation
+  language_order: [GUJ, TAM, MAL, MAR, HIN]
+  seeds:
+    split: 42        # numpy RandomState(42).choice -- NOT sklearn train_test_split
+    gbm: 0
+    permutation: 0
+  bases:
+    full: 7000
+    working: 6995
+    mar_severity: 1258
+
+claims:
+  - id: sample_sizes.full_total
+    value: 7000
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+    note: "5 x 1,400"
+  - id: sample_sizes.working_total
+    value: 6995
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+    note: "segments with a numeric MQM score"
+  - id: sample_sizes.mar_severity
+    value: 1258
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+    note: "MAR minus 142 Default"
+  - id: sample_sizes.dropped.GUJ
+    value: 0
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: sample_sizes.dropped.TAM
+    value: 1
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: sample_sizes.dropped.MAL
+    value: 1
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: sample_sizes.dropped.MAR
+    value: 3
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: sample_sizes.dropped.HIN
+    value: 0
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table1.A.comet_nat
+    value: 94.4
+    tol: 0.05
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+    note: "MAL native, human 25/25"
+  - id: table1.A.comet_rom
+    value: 56.2
+    tol: 0.05
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+    note: "same text romanised"
+  - id: table1.A.drop
+    value: 38.2
+    tol: 0.1
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+    note: "paper: \"loses over 38 COMET points\""
+  - id: table1.B.comet.MAL
+    value: 95.6
+    tol: 0.05
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+    note: "both targets human 25/25"
+  - id: table1.B.comet.HIN
+    value: 33.0
+    tol: 0.05
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table1.B.gap
+    value: 62.6
+    tol: 0.1
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+    note: "the pure-bias gap"
+  - id: table2.comet_nat.GUJ
+    value: 85.7
+    tol: 0.01
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.comet_rom.GUJ
+    value: 70.61
+    tol: 0.01
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.tp_nat.GUJ
+    value: 1.388
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.tp_rom.GUJ
+    value: 1.599
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.ip_nat.GUJ
+    value: 0.438
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.ip_rom.GUJ
+    value: 0.289
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.tp_pct.GUJ
+    value: 15.2
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.ip_pct.GUJ
+    value: -34.0
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.comet_nat.TAM
+    value: 84.88
+    tol: 0.01
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.comet_rom.TAM
+    value: 77.72
+    tol: 0.01
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.tp_nat.TAM
+    value: 1.319
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.tp_rom.TAM
+    value: 2.347
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.ip_nat.TAM
+    value: 0.545
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.ip_rom.TAM
+    value: 0.174
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.tp_pct.TAM
+    value: 77.9
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.ip_pct.TAM
+    value: -68.0
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.comet_nat.MAL
+    value: 84.08
+    tol: 0.01
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.comet_rom.MAL
+    value: 70.07
+    tol: 0.01
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.tp_nat.MAL
+    value: 1.248
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.tp_rom.MAL
+    value: 1.847
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.ip_nat.MAL
+    value: 0.549
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.ip_rom.MAL
+    value: 0.197
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.tp_pct.MAL
+    value: 48.0
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.ip_pct.MAL
+    value: -64.1
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.comet_nat.MAR
+    value: 71.92
+    tol: 0.01
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.comet_rom.MAR
+    value: 72.94
+    tol: 0.01
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.tp_nat.MAR
+    value: 1.165
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.tp_rom.MAR
+    value: 1.64
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.ip_nat.MAR
+    value: 0.49
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.ip_rom.MAR
+    value: 0.28
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.tp_pct.MAR
+    value: 40.7
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.ip_pct.MAR
+    value: -42.9
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.comet_nat.HIN
+    value: 71.75
+    tol: 0.01
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.comet_rom.HIN
+    value: 68.32
+    tol: 0.01
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.tp_nat.HIN
+    value: 1.21
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.tp_rom.HIN
+    value: 1.702
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.ip_nat.HIN
+    value: 0.636
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.ip_rom.HIN
+    value: 0.265
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.tp_pct.HIN
+    value: 40.7
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table13.ip_pct.HIN
+    value: -58.3
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.COMET.nat.GUJ
+    value: 0.59
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.COMET.rom.GUJ
+    value: 0.341
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEURT.nat.GUJ
+    value: 0.522
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEURT.rom.GUJ
+    value: 0.339
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BERTScore.nat.GUJ
+    value: 0.438
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BERTScore.rom.GUJ
+    value: 0.375
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEU.nat.GUJ
+    value: 0.339
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEU.rom.GUJ
+    value: 0.34
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.ChrF.nat.GUJ
+    value: 0.401
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.ChrF.rom.GUJ
+    value: 0.407
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.TER.nat.GUJ
+    value: -0.327
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.TER.rom.GUJ
+    value: -0.333
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.COMET.nat.TAM
+    value: 0.629
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.COMET.rom.TAM
+    value: 0.24
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEURT.nat.TAM
+    value: 0.563
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEURT.rom.TAM
+    value: 0.377
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BERTScore.nat.TAM
+    value: 0.459
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BERTScore.rom.TAM
+    value: 0.412
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEU.nat.TAM
+    value: 0.32
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEU.rom.TAM
+    value: 0.286
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.ChrF.nat.TAM
+    value: -0.312
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.ChrF.rom.TAM
+    value: 0.408
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.TER.nat.TAM
+    value: 0.41
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.TER.rom.TAM
+    value: -0.308
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.COMET.nat.MAL
+    value: 0.651
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.COMET.rom.MAL
+    value: 0.46
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEURT.nat.MAL
+    value: 0.596
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEURT.rom.MAL
+    value: 0.443
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BERTScore.nat.MAL
+    value: 0.566
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BERTScore.rom.MAL
+    value: 0.529
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEU.nat.MAL
+    value: 0.47
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEU.rom.MAL
+    value: 0.409
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.ChrF.nat.MAL
+    value: 0.542
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.ChrF.rom.MAL
+    value: 0.549
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.TER.nat.MAL
+    value: -0.451
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.COMET.nat.MAR
+    value: 0.487
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.COMET.rom.MAR
+    value: 0.278
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEURT.nat.MAR
+    value: 0.443
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEURT.rom.MAR
+    value: 0.286
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BERTScore.nat.MAR
+    value: 0.354
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BERTScore.rom.MAR
+    value: 0.313
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEU.nat.MAR
+    value: 0.261
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEU.rom.MAR
+    value: 0.256
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.ChrF.nat.MAR
+    value: 0.292
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.ChrF.rom.MAR
+    value: 0.307
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.TER.nat.MAR
+    value: -0.255
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.TER.rom.MAR
+    value: -0.258
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.COMET.nat.HIN
+    value: 0.422
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.COMET.rom.HIN
+    value: 0.23
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEURT.nat.HIN
+    value: 0.381
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEURT.rom.HIN
+    value: 0.294
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BERTScore.nat.HIN
+    value: 0.274
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BERTScore.rom.HIN
+    value: 0.214
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEU.nat.HIN
+    value: 0.202
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.BLEU.rom.HIN
+    value: 0.204
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.ChrF.nat.HIN
+    value: 0.224
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.ChrF.rom.HIN
+    value: 0.217
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.TER.nat.HIN
+    value: -0.236
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table10.TER.rom.HIN
+    value: -0.213
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.rho_nat.GUJ
+    value: 0.59
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.rho_rom.GUJ
+    value: 0.341
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.rho_nat.TAM
+    value: 0.629
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.rho_rom.TAM
+    value: 0.24
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.rho_nat.MAL
+    value: 0.651
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.rho_rom.MAL
+    value: 0.46
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.rho_nat.MAR
+    value: 0.487
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.rho_rom.MAR
+    value: 0.278
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.rho_nat.HIN
+    value: 0.422
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table2.rho_rom.HIN
+    value: 0.23
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: table11.meng_z.GUJ
+    value: 10.5
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "Meng, Rosenthal & Rubin (1992)"
+  - id: table11.steiger_z.GUJ
+    value: 10.5
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "Steiger agrees to one decimal"
+  - id: table11.perm_exceed.GUJ
+    value: 0
+    tol: 0
+    status: script
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "5,000-round paired permutation, seed 0"
+  - id: table11.meng_z.TAM
+    value: 16.0
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "Meng, Rosenthal & Rubin (1992)"
+  - id: table11.steiger_z.TAM
+    value: 16.0
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "Steiger agrees to one decimal"
+  - id: table11.perm_exceed.TAM
+    value: 0
+    tol: 0
+    status: script
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "5,000-round paired permutation, seed 0"
+  - id: table11.meng_z.MAL
+    value: 9.8
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "Meng, Rosenthal & Rubin (1992)"
+  - id: table11.steiger_z.MAL
+    value: 9.8
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "Steiger agrees to one decimal"
+  - id: table11.perm_exceed.MAL
+    value: 0
+    tol: 0
+    status: script
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "5,000-round paired permutation, seed 0"
+  - id: table11.meng_z.MAR
+    value: 8.7
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "Meng, Rosenthal & Rubin (1992)"
+  - id: table11.steiger_z.MAR
+    value: 8.7
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "Steiger agrees to one decimal"
+  - id: table11.perm_exceed.MAR
+    value: 0
+    tol: 0
+    status: script
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "5,000-round paired permutation, seed 0"
+  - id: table11.meng_z.HIN
+    value: 10.1
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "Meng, Rosenthal & Rubin (1992)"
+  - id: table11.steiger_z.HIN
+    value: 10.1
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "Steiger agrees to one decimal"
+  - id: table11.perm_exceed.HIN
+    value: 0
+    tol: 0
+    status: script
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "5,000-round paired permutation, seed 0"
+  - id: sec43.rho2_nat.MAL
+    value: 0.42
+    tol: 0.005
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "shared variance"
+  - id: sec43.rho2_rom.MAL
+    value: 0.21
+    tol: 0.005
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: sec43.rho2_nat.TAM
+    value: 0.4
+    tol: 0.005
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "shared variance"
+  - id: sec43.rho2_rom.TAM
+    value: 0.06
+    tol: 0.005
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: anova.native.F_7000
+    value: 2080.8
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "N = 7,000; COMET is complete, so no rows are dropped"
+  - id: anova.native.eta2_7000
+    value: 22.9
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: anova.romanised.F_7000
+    value: 108.3
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: anova.romanised.eta2_7000
+    value: 1.5
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: anova.native.F_6995
+    value: 2080.2
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: anova.native.eta2_6995
+    value: 22.9
+    tol: 0.1
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: anova.variance_reduction_pct
+    value: 93.3
+    tol: 0.2
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "eta2 22.9% -> 1.5%"
+  - id: hin_guj.gap_native
+    value: 13.95
+    tol: 0.01
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: hin_guj.welch_t_native
+    value: 27.4
+    tol: 0.05
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: hin_guj.gap_romanised
+    value: 2.29
+    tol: 0.01
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: hin_guj.welch_t_romanised
+    value: 6.97
+    tol: 0.05
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: hin_guj.gap_reduction_pct
+    value: 84
+    tol: 1.0
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: sec41.tp_ip_r_nat
+    value: -0.481
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+    note: "n=5 languages, descriptive"
+  - id: sec41.tp_ip_p_nat
+    value: 0.41
+    tol: 0.005
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: sec41.tp_ip_r_rom
+    value: -0.896
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: sec41.tp_ip_p_rom
+    value: 0.039
+    tol: 0.001
+    status: verified
+    source: notebooks/02_romanisation_effect.ipynb
+  - id: diagnostics.sbi_nat.GUJ
+    value: 3.45
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "Table 12"
+  - id: diagnostics.ipi_nat.GUJ
+    value: 0.562
+    tol: 0.001
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.ipi_rom.GUJ
+    value: 0.711
+    tol: 0.001
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.p_sbi_ge3_pct.GUJ
+    value: 62.1
+    tol: 0.1
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "Table 11"
+  - id: diagnostics.LP.GUJ
+    value: 1.15
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "Table 13"
+  - id: diagnostics.EP.GUJ
+    value: 1.52
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.tax.GUJ
+    value: 1.75
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.ep_pct.GUJ
+    value: 74.6
+    tol: 0.1
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: table13.ip_comet_r.GUJ
+    value: -0.064
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "sentence-level Pearson, N=1,400"
+  - id: diagnostics.sbi_nat.TAM
+    value: 2.73
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "Table 12"
+  - id: diagnostics.ipi_nat.TAM
+    value: 0.455
+    tol: 0.001
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.ipi_rom.TAM
+    value: 0.826
+    tol: 0.001
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.p_sbi_ge3_pct.TAM
+    value: 34.9
+    tol: 0.1
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "Table 11"
+  - id: diagnostics.LP.TAM
+    value: 1.78
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "Table 13"
+  - id: diagnostics.EP.TAM
+    value: 3.13
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.tax.TAM
+    value: 5.57
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.ep_pct.TAM
+    value: 66.4
+    tol: 0.1
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: table13.ip_comet_r.TAM
+    value: -0.263
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "sentence-level Pearson, N=1,400"
+  - id: diagnostics.sbi_nat.MAL
+    value: 2.62
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "Table 12"
+  - id: diagnostics.ipi_nat.MAL
+    value: 0.451
+    tol: 0.001
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.ipi_rom.MAL
+    value: 0.803
+    tol: 0.001
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.p_sbi_ge3_pct.MAL
+    value: 30.9
+    tol: 0.1
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "Table 11"
+  - id: diagnostics.LP.MAL
+    value: 1.48
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "Table 13"
+  - id: diagnostics.EP.MAL
+    value: 2.78
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.tax.MAL
+    value: 4.12
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.ep_pct.MAL
+    value: 72.3
+    tol: 0.1
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: table13.ip_comet_r.MAL
+    value: -0.266
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "sentence-level Pearson, N=1,400"
+  - id: diagnostics.sbi_nat.MAR
+    value: 2.61
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "Table 12"
+  - id: diagnostics.ipi_nat.MAR
+    value: 0.51
+    tol: 0.001
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.ipi_rom.MAR
+    value: 0.72
+    tol: 0.001
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.p_sbi_ge3_pct.MAR
+    value: 28.2
+    tol: 0.1
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "Table 11"
+  - id: diagnostics.LP.MAR
+    value: 1.41
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "Table 13"
+  - id: diagnostics.EP.MAR
+    value: 1.75
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.tax.MAR
+    value: 2.47
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.ep_pct.MAR
+    value: 62.1
+    tol: 0.1
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: table13.ip_comet_r.MAR
+    value: -0.216
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "sentence-level Pearson, N=1,400"
+  - id: diagnostics.sbi_nat.HIN
+    value: 2.03
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "Table 12"
+  - id: diagnostics.ipi_nat.HIN
+    value: 0.364
+    tol: 0.001
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.ipi_rom.HIN
+    value: 0.735
+    tol: 0.001
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.p_sbi_ge3_pct.HIN
+    value: 6.6
+    tol: 0.1
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "Table 11"
+  - id: diagnostics.LP.HIN
+    value: 1.41
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "Table 13"
+  - id: diagnostics.EP.HIN
+    value: 2.4
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.tax.HIN
+    value: 3.37
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: diagnostics.ep_pct.HIN
+    value: 71.9
+    tol: 0.1
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+  - id: table13.ip_comet_r.HIN
+    value: 0.203
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "sentence-level Pearson, N=1,400"
+  - id: diagnostics.spearman_sbi_comet_n5
+    value: 1.0
+    tol: 0.01
+    status: verified
+    source: notebooks/03_diagnostics_sbi_ipi_tax.ipynb
+    note: "descriptive, n=5"
+  - id: table9.default.GUJ
+    value: 248
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.very_low.GUJ
+    value: 217
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.low.GUJ
+    value: 326
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.medium.GUJ
+    value: 390
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.high.GUJ
+    value: 184
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.very_high.GUJ
+    value: 35
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.total.GUJ
+    value: 1400
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+    note: "caption: buckets sum to 1,400"
+  - id: table9.default.TAM
+    value: 60
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.very_low.TAM
+    value: 124
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.low.TAM
+    value: 151
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.medium.TAM
+    value: 323
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.high.TAM
+    value: 313
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.very_high.TAM
+    value: 429
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.total.TAM
+    value: 1400
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+    note: "caption: buckets sum to 1,400"
+  - id: table9.default.MAL
+    value: 372
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.very_low.MAL
+    value: 25
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.low.MAL
+    value: 162
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.medium.MAL
+    value: 443
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.high.MAL
+    value: 334
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.very_high.MAL
+    value: 64
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.total.MAL
+    value: 1400
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+    note: "caption: buckets sum to 1,400"
+  - id: table9.default.MAR
+    value: 142
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.very_low.MAR
+    value: 69
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.low.MAR
+    value: 86
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.medium.MAR
+    value: 184
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.high.MAR
+    value: 258
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.very_high.MAR
+    value: 661
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.total.MAR
+    value: 1400
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+    note: "caption: buckets sum to 1,400"
+  - id: table9.default.HIN
+    value: 399
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+    note: "paper prints 391 for HIN Default, which makes its row sum to 1,392; the caption states buckets sum to 1,400, and 399 is the value in the data"
+  - id: table9.very_low.HIN
+    value: 1
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.low.HIN
+    value: 7
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.medium.HIN
+    value: 134
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.high.HIN
+    value: 324
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.very_high.HIN
+    value: 535
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+  - id: table9.total.HIN
+    value: 1400
+    tol: 0
+    status: verified
+    source: notebooks/01_load_and_sample_sizes.ipynb
+    note: "caption: buckets sum to 1,400"
+  - id: severity.N.very_low
+    value: 69
+    tol: 0
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.mean_dcomet.very_low
+    value: -3.72
+    tol: 0.01
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.N.low
+    value: 86
+    tol: 0
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.mean_dcomet.low
+    value: -1.9
+    tol: 0.01
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.N.medium
+    value: 184
+    tol: 0
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.mean_dcomet.medium
+    value: 0.73
+    tol: 0.01
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.N.high
+    value: 258
+    tol: 0
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.mean_dcomet.high
+    value: 1.08
+    tol: 0.01
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.N.very_high
+    value: 661
+    tol: 0
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.mean_dcomet.very_high
+    value: 2.63
+    tol: 0.01
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.spearman_rho
+    value: 0.183
+    tol: 0.001
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.spearman_N
+    value: 1258
+    tol: 0
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.wilcoxon_W
+    value: 453856
+    tol: 0
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.wilcoxon_p
+    value: 0.016
+    tol: 0.001
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.wilcoxon_median
+    value: -0.21
+    tol: 0.01
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.example_comet_nat
+    value: 36.6
+    tol: 0.05
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.example_comet_rom
+    value: 62.7
+    tol: 0.05
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: severity.example_delta
+    value: 26.1
+    tol: 0.05
+    status: verified
+    source: notebooks/04_severity_inversion.ipynb
+  - id: table5.gap.raw
+    value: 7.88
+    tol: 0.005
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+    note: "50/50 within-language split; see meta.seeds"
+  - id: table5.rho_lang.raw
+    value: 0.31
+    tol: 0.001
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+  - id: table5.rho_pool.raw
+    value: 0.16
+    tol: 0.001
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+  - id: table5.gap.mean_shift
+    value: 0.61
+    tol: 0.005
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+    note: "50/50 within-language split; see meta.seeds"
+  - id: table5.rho_lang.mean_shift
+    value: 0.31
+    tol: 0.001
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+  - id: table5.rho_pool.mean_shift
+    value: 0.28
+    tol: 0.001
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+  - id: table5.gap.affine
+    value: 0.63
+    tol: 0.005
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+    note: "50/50 within-language split; see meta.seeds"
+  - id: table5.rho_lang.affine
+    value: 0.31
+    tol: 0.001
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+  - id: table5.rho_pool.affine
+    value: 0.301
+    tol: 0.001
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+  - id: table5.gap.quantile
+    value: 0.61
+    tol: 0.005
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+    note: "50/50 within-language split; see meta.seeds"
+  - id: table5.rho_lang.quantile
+    value: 0.31
+    tol: 0.001
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+  - id: table5.rho_pool.quantile
+    value: 0.298
+    tol: 0.001
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+  - id: table5.gap.isotonic
+    value: 0.68
+    tol: 0.005
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+    note: "50/50 within-language split; see meta.seeds"
+  - id: table5.rho_lang.isotonic
+    value: 0.309
+    tol: 0.001
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+  - id: table5.rho_pool.isotonic
+    value: 0.282
+    tol: 0.001
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+  - id: table5.gap.native_ceiling
+    value: 0.0
+    tol: 0.005
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+    note: "50/50 within-language split; see meta.seeds"
+  - id: table5.rho_lang.native_ceiling
+    value: 0.564
+    tol: 0.001
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+  - id: table5.rho_pool.native_ceiling
+    value: 0.488
+    tol: 0.001
+    status: script
+    source: notebooks/05_corrector_impossibility.ipynb
+  - id: comet_qn.N
+    value: 6995
+    tol: 0
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: comet_qn.gap_before
+    value: 8.14
+    tol: 0.01
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: comet_qn.gap_after
+    value: 0.0
+    tol: 0.01
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+    note: "zero by construction"
+  - id: comet_qn.pearson_before
+    value: 0.324
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: comet_qn.pearson_after
+    value: 0.4
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: comet_qn.spearman_before
+    value: 0.3
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: comet_qn.spearman_after
+    value: 0.399
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: comet_qn.within_before.GUJ
+    value: 0.59
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: comet_qn.within_after.GUJ
+    value: 0.59
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+    note: "unchanged: QN is rank-preserving"
+  - id: comet_qn.within_before.TAM
+    value: 0.629
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: comet_qn.within_after.TAM
+    value: 0.629
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+    note: "unchanged: QN is rank-preserving"
+  - id: comet_qn.within_before.MAL
+    value: 0.651
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: comet_qn.within_after.MAL
+    value: 0.651
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+    note: "unchanged: QN is rank-preserving"
+  - id: comet_qn.within_before.MAR
+    value: 0.487
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: comet_qn.within_after.MAR
+    value: 0.487
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+    note: "unchanged: QN is rank-preserving"
+  - id: comet_qn.within_before.HIN
+    value: 0.422
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: comet_qn.within_after.HIN
+    value: 0.422
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+    note: "unchanged: QN is rank-preserving"
+  - id: lolo.rho_raw.GUJ
+    value: 0.341
+    tol: 0.001
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+    note: "GBM seed 0, 7 parity features"
+  - id: lolo.rho_cal.GUJ
+    value: 0.437
+    tol: 0.001
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+  - id: lolo.rho_nat.GUJ
+    value: 0.59
+    tol: 0.001
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+  - id: lolo.recovered_pct.GUJ
+    value: 38.6
+    tol: 0.1
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+  - id: lolo.rho_raw.TAM
+    value: 0.24
+    tol: 0.001
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+    note: "GBM seed 0, 7 parity features"
+  - id: lolo.rho_cal.TAM
+    value: 0.291
+    tol: 0.001
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+  - id: lolo.rho_nat.TAM
+    value: 0.629
+    tol: 0.001
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+  - id: lolo.recovered_pct.TAM
+    value: 13.0
+    tol: 0.1
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+  - id: lolo.rho_raw.MAL
+    value: 0.46
+    tol: 0.001
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+    note: "GBM seed 0, 7 parity features"
+  - id: lolo.rho_cal.MAL
+    value: 0.524
+    tol: 0.001
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+  - id: lolo.rho_nat.MAL
+    value: 0.651
+    tol: 0.001
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+  - id: lolo.recovered_pct.MAL
+    value: 33.5
+    tol: 0.1
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+  - id: lolo.rho_raw.MAR
+    value: 0.278
+    tol: 0.001
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+    note: "GBM seed 0, 7 parity features"
+  - id: lolo.rho_cal.MAR
+    value: 0.236
+    tol: 0.001
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+  - id: lolo.rho_nat.MAR
+    value: 0.487
+    tol: 0.001
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+  - id: lolo.recovered_pct.MAR
+    value: -20.3
+    tol: 0.1
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+  - id: lolo.rho_raw.HIN
+    value: 0.23
+    tol: 0.001
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+    note: "GBM seed 0, 7 parity features"
+  - id: lolo.rho_cal.HIN
+    value: 0.27
+    tol: 0.001
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+  - id: lolo.rho_nat.HIN
+    value: 0.422
+    tol: 0.001
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+  - id: lolo.recovered_pct.HIN
+    value: 20.8
+    tol: 0.1
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+  - id: lolo.mean_recovered_pct
+    value: 17.1
+    tol: 0.1
+    status: script
+    source: notebooks/07_lolo_calibration.ipynb
+    note: "seven parity features; see meta.seeds"
+  - id: table4.tp_nat.gpt2
+    value: 11.14
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+    note: "mean over the five languages"
+  - id: table4.tp_rom.gpt2
+    value: 2.6
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: table4.delta_pct.gpt2
+    value: -75.5
+    tol: 0.05
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+    note: "mean of per-language relative changes"
+  - id: table4.nat_min.gpt2
+    value: 7.51
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: table4.nat_max.gpt2
+    value: 14.7
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: table4.tp_nat.byt5
+    value: 2.69
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+    note: "mean over the five languages"
+  - id: table4.tp_rom.byt5
+    value: 1.21
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: table4.delta_pct.byt5
+    value: -54.9
+    tol: 0.05
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+    note: "mean of per-language relative changes"
+  - id: table4.nat_min.byt5
+    value: 2.5
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: table4.nat_max.byt5
+    value: 3.02
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: table4.tp_nat.mbert
+    value: 2.09
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+    note: "mean over the five languages"
+  - id: table4.tp_rom.mbert
+    value: 2.02
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: table4.delta_pct.mbert
+    value: -1.8
+    tol: 0.05
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+    note: "mean of per-language relative changes"
+  - id: table4.nat_min.mbert
+    value: 1.77
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: table4.nat_max.mbert
+    value: 2.43
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: table4.tp_nat.xlmr
+    value: 1.27
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+    note: "mean over the five languages"
+  - id: table4.tp_rom.xlmr
+    value: 1.83
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: table4.delta_pct.xlmr
+    value: 44.5
+    tol: 0.05
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+    note: "mean of per-language relative changes"
+  - id: table4.nat_min.xlmr
+    value: 1.17
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: table4.nat_max.xlmr
+    value: 1.39
+    tol: 0.005
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: tokenizer.xlmr.tp_pct.GUJ
+    value: 15.2
+    tol: 0.1
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: tokenizer.xlmr.tp_pct.TAM
+    value: 77.9
+    tol: 0.1
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: tokenizer.xlmr.tp_pct.MAL
+    value: 48.0
+    tol: 0.1
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: tokenizer.xlmr.tp_pct.MAR
+    value: 40.7
+    tol: 0.1
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: tokenizer.xlmr.tp_pct.HIN
+    value: 40.7
+    tol: 0.1
+    status: verified
+    source: notebooks/08_tokenizer_robustness.ipynb
+  - id: table15.nat.GUJ
+    value: 0.883
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "word count vs XLM-R token count"
+  - id: table15.rom.GUJ
+    value: 0.952
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+  - id: table17.mattr_nat.GUJ
+    value: 0.752
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "MATTR w=500"
+  - id: table17.mattr_rom.GUJ
+    value: 0.665
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+  - id: table15.nat.TAM
+    value: 0.85
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "word count vs XLM-R token count"
+  - id: table15.rom.TAM
+    value: 0.905
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+  - id: table17.mattr_nat.TAM
+    value: 0.862
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "MATTR w=500"
+  - id: table17.mattr_rom.TAM
+    value: 0.733
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+  - id: table15.nat.MAL
+    value: 0.875
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "word count vs XLM-R token count"
+  - id: table15.rom.MAL
+    value: 0.9
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+  - id: table17.mattr_nat.MAL
+    value: 0.897
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "MATTR w=500"
+  - id: table17.mattr_rom.MAL
+    value: 0.768
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+  - id: table15.nat.MAR
+    value: 0.891
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "word count vs XLM-R token count"
+  - id: table15.rom.MAR
+    value: 0.942
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+  - id: table17.mattr_nat.MAR
+    value: 0.827
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "MATTR w=500"
+  - id: table17.mattr_rom.MAR
+    value: 0.721
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+  - id: table15.nat.HIN
+    value: 0.897
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "word count vs XLM-R token count"
+  - id: table15.rom.HIN
+    value: 0.956
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+  - id: table17.mattr_nat.HIN
+    value: 0.633
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "MATTR w=500"
+  - id: table17.mattr_rom.HIN
+    value: 0.601
+    tol: 0.001
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+  - id: latin_controls.ip.DEU
+    value: 0.535
+    tol: 0.001
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+    note: "Table 12/15"
+  - id: latin_controls.tp.DEU
+    value: 1.133
+    tol: 0.001
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+  - id: latin_controls.sbi.DEU
+    value: 2.24
+    tol: 0.005
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+  - id: latin_controls.ipi.DEU
+    value: 0.465
+    tol: 0.001
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+  - id: latin_controls.ip_comet_r.DEU
+    value: -0.262
+    tol: 0.001
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+  - id: latin_controls.rows.DEU
+    value: 6006
+    tol: 0
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+  - id: latin_controls.ip.SPA
+    value: 1.009
+    tol: 0.001
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+    note: "Table 12/15"
+  - id: latin_controls.tp.SPA
+    value: 1.09
+    tol: 0.001
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+  - id: latin_controls.sbi.SPA
+    value: 1.12
+    tol: 0.005
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+  - id: latin_controls.ipi.SPA
+    value: 0.009
+    tol: 0.001
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+  - id: latin_controls.ip_comet_r.SPA
+    value: -0.021
+    tol: 0.001
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+  - id: latin_controls.rows.SPA
+    value: 4651
+    tol: 0
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+  - id: appE.deu_sbi_errorfree
+    value: 2.349
+    tol: 0.005
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+    note: "error-free DEU segments"
+  - id: appE.deu_sbi_major
+    value: 2.129
+    tol: 0.005
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+    note: "major-error DEU segments"
+  - id: appE.deu_kruskal_H
+    value: 135.0
+    tol: 0.5
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+    note: "SBI Reversal; opposite of the Indic direction"
+  - id: figure2.ipi_nat.GUJ
+    value: 0.562
+    tol: 0.001
+    status: verified
+    source: notebooks/11_figures.ipynb
+  - id: figure2.ipi_rom.GUJ
+    value: 0.711
+    tol: 0.001
+    status: verified
+    source: notebooks/11_figures.ipynb
+  - id: figure2.ipi_nat.TAM
+    value: 0.455
+    tol: 0.001
+    status: verified
+    source: notebooks/11_figures.ipynb
+  - id: figure2.ipi_rom.TAM
+    value: 0.826
+    tol: 0.001
+    status: verified
+    source: notebooks/11_figures.ipynb
+  - id: figure2.ipi_nat.MAL
+    value: 0.451
+    tol: 0.001
+    status: verified
+    source: notebooks/11_figures.ipynb
+  - id: figure2.ipi_rom.MAL
+    value: 0.803
+    tol: 0.001
+    status: verified
+    source: notebooks/11_figures.ipynb
+  - id: figure2.ipi_nat.MAR
+    value: 0.51
+    tol: 0.001
+    status: verified
+    source: notebooks/11_figures.ipynb
+  - id: figure2.ipi_rom.MAR
+    value: 0.72
+    tol: 0.001
+    status: verified
+    source: notebooks/11_figures.ipynb
+  - id: figure2.ipi_nat.HIN
+    value: 0.364
+    tol: 0.001
+    status: verified
+    source: notebooks/11_figures.ipynb
+  - id: figure2.ipi_rom.HIN
+    value: 0.735
+    tol: 0.001
+    status: verified
+    source: notebooks/11_figures.ipynb
+  - id: table17.byte_premium.GUJ
+    value: 3.03
+    tol: 0.005
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "mean UTF-8 bytes per word, target divided by English source"
+  - id: table17.byte_premium.TAM
+    value: 5.3
+    tol: 0.005
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "mean UTF-8 bytes per word, target divided by English source"
+  - id: table17.byte_premium.MAL
+    value: 5.33
+    tol: 0.005
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "mean UTF-8 bytes per word, target divided by English source"
+  - id: table17.byte_premium.MAR
+    value: 3.64
+    tol: 0.005
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "mean UTF-8 bytes per word, target divided by English source"
+  - id: table17.byte_premium.HIN
+    value: 2.45
+    tol: 0.005
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "mean UTF-8 bytes per word, target divided by English source"
+  - id: latin_controls.byte_premium.DEU
+    value: 1.25
+    tol: 0.005
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+  - id: latin_controls.byte_premium.SPA
+    value: 1.09
+    tol: 0.005
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+  - id: latin_controls.mattr.DEU
+    value: 0.634
+    tol: 0.001
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+    note: "MATTR w = 500, case-folded"
+  - id: latin_controls.mattr.SPA
+    value: 0.581
+    tol: 0.001
+    status: verified
+    source: notebooks/10_latin_controls.ipynb
+    note: "MATTR w = 500, case-folded"
+  - id: table13.dv_per_1k.GUJ
+    value: 36.7
+    tol: 0.05
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "single-character dependent-vowel tokens per 1,000 XLM-R tokens"
+  - id: table13.dv_per_1k.TAM
+    value: 13.6
+    tol: 0.05
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "single-character dependent-vowel tokens per 1,000 XLM-R tokens"
+  - id: table13.dv_per_1k.MAL
+    value: 42.5
+    tol: 0.05
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+    note: "single-character dependent-vowel tokens per 1,000 XLM-R tokens"
+  - id: table13.dv_per_1k.MAR
+    value: 24.5
+    tol: 0.05
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+  - id: table13.dv_per_1k.HIN
+    value: 18.3
+    tol: 0.05
+    status: verified
+    source: notebooks/09_corpus_corroboration.ipynb
+  - id: table6.raw.1
+    value: 71.07
+    tol: 0.005
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+    note: "first five romanised Gujarati segments, ascending"
+  - id: table6.position.1
+    value: 0.167
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: table6.mapped.1
+    value: 68.21
+    tol: 0.02
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: table6.raw.2
+    value: 76.41
+    tol: 0.005
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: table6.position.2
+    value: 0.333
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: table6.mapped.2
+    value: 77.27
+    tol: 0.02
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: table6.raw.3
+    value: 78.14
+    tol: 0.005
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: table6.position.3
+    value: 0.5
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: table6.mapped.3
+    value: 83.14
+    tol: 0.02
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: table6.raw.4
+    value: 78.24
+    tol: 0.005
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: table6.position.4
+    value: 0.667
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: table6.mapped.4
+    value: 87.58
+    tol: 0.02
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: table6.raw.5
+    value: 80.33
+    tol: 0.005
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: table6.position.5
+    value: 0.833
+    tol: 0.001
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
+  - id: table6.mapped.5
+    value: 91.48
+    tol: 0.02
+    status: verified
+    source: notebooks/06_comet_qn.ipynb
