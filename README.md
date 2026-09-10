@@ -1,7 +1,7 @@
 # Making COMET Comparable Across Scripts
 ### Diagnosis and Correction of Tokeniser-Induced Script Bias in Indic MT Evaluation
 
-> **Status:** Under review
+> **Status:** Accepted
 
 ---
 
